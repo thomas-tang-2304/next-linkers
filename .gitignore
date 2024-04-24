@@ -10,7 +10,8 @@ next-linker/.yarn/install-state.gz
 /next-linker/coverage
 
 # next.js
-/next-linker//.next/
+/next-linker/.next/
+next-linker/package-lock.json
 /next-linker/out/
 
 # production
