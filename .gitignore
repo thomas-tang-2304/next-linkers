@@ -13,3 +13,7 @@ next-linker/.DS_Store
 /crawl-links/src/history/*
 /crawl-links/dist/
 
+/crawl-links/.env
+/crawl-links/.env.production
+
+
