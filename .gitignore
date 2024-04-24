@@ -37,7 +37,3 @@ next-linker/.vercel
 next-linker/*.tsbuildinfo
 next-linker/next-env.d.ts
 
-/crawl-links/node_modules/
-/crawl-links/package-lock.json
-/crawl-links/src/history/*
-/crawl-links/dist/
