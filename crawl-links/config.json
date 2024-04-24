@@ -1,0 +1,18 @@
+{
+  "TAG_NAMES": [
+    "blockquote|href",
+    "area|href",
+    "base|href",
+    "link|href",
+    "a|href",
+    "audio|src",
+    "embed|src",
+    "iframe|src",
+    "img|src",
+    "input|src",
+    "script|src",
+    "source|src",
+    "track|src",
+    "video|src"
+  ]
+}
