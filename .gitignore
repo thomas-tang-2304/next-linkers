@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/next-linker/node_modules
+/next-linker/.pnp
+next-linker/.pnp.js
+next-linker/.yarn/install-state.gz
+
+# testing
+/next-linker/coverage
+
+# next.js
+/next-linker//.next/
+/next-linker/out/
+
+# production
+/next-linker/build
+
+# misc
+next-linker/.DS_Store
+next-linker/*.pem
+
+# debug
+next-linker/npm-debug.log*
+next-linker/yarn-debug.log*
+next-linker/yarn-error.log*
+
+# local env files
+next-linker/.env*.local
+
+# vercel
+next-linker/.vercel
+
+# typescript
+next-linker/*.tsbuildinfo
+next-linker/next-env.d.ts
+
+crawl-links/node_modules/
+crawl-links/package-lock.json
+crawl-links/src/history/*
+crawl-links/dist/
