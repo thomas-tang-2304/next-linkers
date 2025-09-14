@@ -17,10 +17,12 @@ import { GET_project_general } from "apis/GET_project_general";
 import { POST_create_file, POST_delete_file } from "apis/POST_CRUD_file";
 import { validate_email } from "funcs/validate_inpu";
 import { toHHMMSS } from "funcs/to_hhmmss";
+import schedule from 'node-schedule';
 
-const serverURL = "localhost:3001";
+// const serverURL = "localhost:3001";
 
 export default function Project({ projectID, setProjects, projects }: any) {
+  
   // let socket = io(serverURL);
 
   const [isCalling, setCalling] = useState<boolean | null>(null);
@@ -33,46 +35,43 @@ export default function Project({ projectID, setProjects, projects }: any) {
 
   const InputLink: any = useRef();
   const InputEmail: any = useRef();
+ 
 
-  let getInterval: any;
 
   useEffect(() => {
-    mapProjectByID(projectID);
+    mapProjectByID();
+    const fetcher = (schedule.scheduleJob('*/5 * * * * *', function(){
+      (async() => {
+        setProject((await GET_project_general(projectID)).data);
+      })();
+  }));
+    return () => {
+      
+      fetcher?.cancel();
+    }
   }, [projects]);
 
-  const mapProjectByID = async (id: string) => {
+  const mapProjectByID = async () => {
     const projectData = (await GET_project_general(projectID)).data;
     if (projectData.status == "crawling") {
       setCalling(true);
-      getInterval = setInterval(() => {
-        (async () => {
-          setProject((await GET_project_general(projectID)).data);
-        })();
-      }, 5000);
+     
     }
-    if (project.status == "finished") {
-      clearInterval(getInterval);
+    if (project.status == "finished" || project.status == "failed") {
+      setCalling(false)
     }
-    console.log(projectData);
-
+    
     setProject(projectData);
+    return projectData
   };
-
+  
   const POST_handleSendLink = async (e: any) => {
     if (e.key === "Enter") {
-      // socket?.emit("crawl", socket.id);
-      // socket.emit("chat message", '{"msg": "Start Crawling..."}', socket.id);
-
+      
       const colors = ["yellow", "white", "green", "indigo", "purple"];
 
       const random = Math.floor(Math.random() * colors.length);
-      getInterval = setInterval(() => {
-        (async () => {
-          console.log((await GET_project_general(projectID)).data);
-
-          setProject((await GET_project_general(projectID)).data);
-        })();
-      }, 5000);
+     
 
       const initialProject = {
         project_id: projectID,
@@ -80,10 +79,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
         status: "crawling",
         color: colors[random],
       };
-      // console.log(JSON.parse(raw));
-
-      // SET cookie with projects
-      // const cookie_projects_id = (await get("projects"))?.value;
+     
       (async () => {
         const initialProjectData = await POST_create_file({
           ...initialProject,
@@ -150,9 +146,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
           })
           .finally(() => {
             setCalling(false);
-            // socket?.emit("stop crawling", socket.id);
-            console.log(`${projectID} has stop crawling`);
-            clearInterval(getInterval);
+            // console.log(`${projectID} has stop crawling`);
           });
       } else {
         setErrorEmail(true);

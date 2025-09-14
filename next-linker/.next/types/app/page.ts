@@ -1,4 +1,4 @@
-// File: C:\Users\Hong-3B\Desktop\next-linkers\next-linker\src\app\page.tsx
+// File: /Users/hoa/Documents/next-linkers/next-linker/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

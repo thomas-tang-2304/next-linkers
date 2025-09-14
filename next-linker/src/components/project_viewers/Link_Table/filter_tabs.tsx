@@ -7,7 +7,7 @@ export default function Filter_tabs({
   sectionState,
   setSearchLinkInput,
 }: any) {
-  // const socket = useContext(ProjectViewContext);
+
 
   const [tab1, setTab1] = useState<string | null>(null);
   const [tab2, setTab2] = useState<string | null>(null);

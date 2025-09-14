@@ -13,11 +13,9 @@ const {
 const createRealtime = (io) => {
   io.on("connection", (socket) => {
     if (socket.recovered) {
-      // recovery was successful: socket.id, socket.rooms and socket.data were restored
       console.log("A user reconnected. ID: ", socket.id);
     } else {
       console.log("A user connected. ID: ", socket.id);
-      // new or unrecoverable session
     }
 
     socket.on("chat message", (msg, uid) => {

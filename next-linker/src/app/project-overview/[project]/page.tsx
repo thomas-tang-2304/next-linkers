@@ -11,17 +11,14 @@ import React, {
 import { usePathname } from "next/navigation";
 import ChartComponent from "../../../components/project_viewers/overview";
 import UrlTable from "../../../components/project_viewers/Link_Table/url_table";
-import { Socket, io } from "socket.io-client";
+
 import Link_from from "components/project_viewers/Link_Table/link_from";
 import { GET_project_general } from "apis/GET_project_general";
 import { GET_links_result_pagination } from "apis/GET_links_result_pagination";
 
-const serverURL = "localhost:3001";
 
-// export const ProjectViewContext = createContext<Socket>(io(serverURL));
 
 export default function LinkOverview() {
-  // const socket = useMemo(() => io(serverURL), []);
   const pathname = usePathname();
 
   const [page, setPage] = useState(1);

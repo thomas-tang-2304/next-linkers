@@ -46,6 +46,7 @@ const Page: NextPageWithLayout = () => {
 
   useEffect(() => {
     handleGetCookies();
+   
   }, []);
 
   const handleGetCookies = async () => {
@@ -56,7 +57,7 @@ const Page: NextPageWithLayout = () => {
       setProjects(
         cookieProjects?.includes("|")
           ? Array.from(new Set(cookieProjects.split("|").map((proj: any) => proj)))
-          : [cookieProjects] ?? []
+          : [cookieProjects]
       );
     }
   };
@@ -69,12 +70,14 @@ const Page: NextPageWithLayout = () => {
             <>
               <div key={key} className="rounded-lg w-full">
                 <CrawllinksContext.Provider
+                key={key}
                   value={{
                     isCalling,
                     setCalling,
                   }}
                 >
                   <Project
+                  key={key}
                     projectID={proj}
                     setProjects={setProjects}
                     projects={projects}
@@ -104,12 +107,14 @@ const Page: NextPageWithLayout = () => {
             <>
               <div key={key} className="rounded-lg w-full">
                 <CrawllinksContext.Provider
+                key={key}
                   value={{
                     isCalling,
                     setCalling,
                   }}
                 >
                   <Project
+                  key={key}
                     projectID={proj}
                     setProjects={setProjects}
                     projects={projects}
@@ -138,12 +143,14 @@ const Page: NextPageWithLayout = () => {
             <>
               <div key={key} className="rounded-lg w-full">
                 <CrawllinksContext.Provider
+                key={key}
                   value={{
                     isCalling,
                     setCalling,
                   }}
                 >
                   <Project
+                  key={key}
                     projectID={proj}
                     setProjects={setProjects}
                     projects={projects}
@@ -172,12 +179,15 @@ const Page: NextPageWithLayout = () => {
             <>
               <div key={key} className="rounded-lg w-full">
                 <CrawllinksContext.Provider
+                key={key}
                   value={{
+                    
                     isCalling,
                     setCalling,
                   }}
                 >
                   <Project
+                  key={key}
                     projectID={proj}
                     setProjects={setProjects}
                     projects={projects}

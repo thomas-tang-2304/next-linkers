@@ -31,13 +31,18 @@ emailRouter.post("/send", async (req, res) => {
     // Lấy thông tin gửi lên từ client qua body
     console.log({ email, url, uid_socket });
     if (
-      (!email || !url || !uid_socket) &&
-      existsSync(`src/history/${uid_socket}`)
+      !email || !url || !uid_socket
     )
       throw new Error("Please provide email, subject and url!");
     const result = await measureTime(
       async () => await crawlWebsite(parseUrl, uid_socket, color)
     );
+
+    if (
+      existsSync(`src/history/${uid_socket}`)
+    ) {
+      throw new Error("The project has been deleted!");
+    }
 
     const currentMain = {
       ...JSON.parse(readFileSync(`src/history/${uid_socket}/main.json`)),
@@ -88,27 +93,9 @@ emailRouter.post("/send", async (req, res) => {
       message: "Email sent successfully.",
     });
   } catch (error) {
-    const mailOptions = {
-      to: email, // Gửi đến ai?
-      subject: "Kết quả trả về từ tên miền crawl.khangtrieu.com", // Tiêu đề email
-      html: JSON.stringify({ errors: error.message }).replace(
-        /\[object Object\]/g,
-        ""
-      ), // Nội dung email
-    };
+    console.log(error)
     // Có lỗi thì các bạn log ở đây cũng như gửi message lỗi về phía client
-    console.log(error);
-    currentMain.status = "failed";
-    writeFileSync(
-      `src/history/${uid_socket}/main.json`,
-      JSON.stringify(currentMain)
-    );
-    await transport.sendMail(mailOptions);
-    res.status(500).json({
-      errors: error.message,
-      url: parseUrl.toString().split("/")[2],
-      // elapsedTime: result.elapsedTime,
-    });
+
   }
 });
 

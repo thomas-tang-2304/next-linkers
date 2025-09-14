@@ -85,7 +85,7 @@ if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
   // Tạo worker cho mỗi nhân CPU
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 8; i++) {
     cluster.fork();
   }
 
