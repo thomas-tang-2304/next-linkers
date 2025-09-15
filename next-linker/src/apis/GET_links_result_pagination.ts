@@ -14,7 +14,7 @@
     };
     setSpinning(true);
     fetch(
-      `http://192.168.1.229:3002/links/get-crawled-link-data?project_id=${id_}&filter_tab=${JSON.stringify(
+      `http://localhost:3002/links/get-crawled-link-data?project_id=${id_}&filter_tab=${JSON.stringify(
         _filter_tabs
       )}&search_input=${search_input}&limit=${pagination_state.limit}&page=${pagination_state.page}`,
       requestOptions

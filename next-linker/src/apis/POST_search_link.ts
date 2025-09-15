@@ -13,7 +13,7 @@ export const POST_find_link_from = async (project_id: string, search_link: strin
         redirect: "follow",
       };
 
-       return fetch("http://192.168.1.229:3002/find", requestOptions)
+       return fetch("http://localhost:3002/find", requestOptions)
           .then((response) => response.text())
           .then((result) => result)
           .catch((error) => error)

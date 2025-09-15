@@ -1,7 +1,11 @@
 {
   "/page": "app/page.js",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "/project-overview/[project]/page": "app/project-overview/[project]/page.js"
+=======
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+>>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 =======
   "/favicon.ico/route": "app/favicon.ico/route.js"
 >>>>>>> a574262ff579004acd748e670a7b104b32445f2b
