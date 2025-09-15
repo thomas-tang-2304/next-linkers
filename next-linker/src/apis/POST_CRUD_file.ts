@@ -15,7 +15,7 @@ var myHeaders = new Headers();
         redirect: "follow",
       };
 
-       return fetch("http://localhost:3002/links/create-file", requestOptions)
+       return fetch("http://192.168.1.229:3002/links/create-file", requestOptions)
           .then((response) => response.text())
           .then((result) => result)
           .catch((error) => error)
@@ -37,7 +37,11 @@ var myHeaders = new Headers();
         redirect: "follow",
       };
 
+<<<<<<< HEAD
        return fetch("http://http://localhost/:3002/links/delete-file", requestOptions)
+=======
+       return fetch("http://http://192.168.1.229/:3002/links/delete-file", requestOptions)
+>>>>>>> c984030b73b3a7b064b8ac96c56692ae06155fb4
           .then((response) => response.text())
           .then((result) => result)
           .catch((error) => error)

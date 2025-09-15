@@ -2,11 +2,17 @@
   "/page": "app/page.js",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c984030b73b3a7b064b8ac96c56692ae06155fb4
   "/project-overview/[project]/page": "app/project-overview/[project]/page.js"
 =======
   "/favicon.ico/route": "app/favicon.ico/route.js"
 >>>>>>> a574262ff579004acd748e670a7b104b32445f2b
+<<<<<<< HEAD
 =======
   "/favicon.ico/route": "app/favicon.ico/route.js"
 >>>>>>> a574262ff579004acd748e670a7b104b32445f2b
+=======
+>>>>>>> c984030b73b3a7b064b8ac96c56692ae06155fb4
 }

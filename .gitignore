@@ -1,4 +1,5 @@
 /next-linker/node_modules
+/next-linker/.next
 
 next-linker/package-lock.json
 
