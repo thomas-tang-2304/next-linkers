@@ -124,7 +124,7 @@ async function crawlWebsite(startUrl, uid_socket, color = "white") {
 
   const browser = await puppeteer.launch({
     headless: true,
-    executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    executablePath: "C:\/Program Files\/Google\/Chrome\/Application\/chrome.exe",
     // args: [
     //   '--no-sandbox',
     //   '--disable-setuid-sandbox',

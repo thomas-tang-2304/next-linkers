@@ -20,7 +20,7 @@ export const scrap = async (browser, url) => {
         }
     });
     await Promise.all([
-        page.goto(url, { waitUntil: 'networkidle2', timeout: 10000 }),
+        page.goto(url, { waitUntil: 'networkidle2', timeout: 15000 }),
         // page.waitForNetworkIdle({ idleTime: 5000 }),
       ]);
     await page.setViewport({
