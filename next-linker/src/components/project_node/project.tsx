@@ -19,11 +19,8 @@ import { validate_email } from "funcs/validate_inpu";
 import { toHHMMSS } from "funcs/to_hhmmss";
 import schedule from 'node-schedule';
 
-// const serverURL = "localhost:3001";
 
 export default function Project({ projectID, setProjects, projects }: any) {
-  
-  // let socket = io(serverURL);
 
   const [isCalling, setCalling] = useState<boolean | null>(null);
 
@@ -117,8 +114,8 @@ export default function Project({ projectID, setProjects, projects }: any) {
       if (validate_email(InputEmail.current.value.trim())) {
         setCalling(true);
         setErrorEmail(false);
-        setProject({ initialProject });
-        fetch("http://localhost:3001/email/send", requestOptions)
+        setProject({ initialProject }); 
+        fetch("http://192.168.1.229:3001/email/send", requestOptions)
           .then((response) => response.text())
           .then((result) => {
             setHasError(false);
