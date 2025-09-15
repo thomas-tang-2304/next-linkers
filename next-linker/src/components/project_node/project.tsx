@@ -114,7 +114,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
       if (validate_email(InputEmail.current.value.trim())) {
         setCalling(true);
         setErrorEmail(false);
-        setProject({ initialProject });
+        setProject({ initialProject }); 
         fetch("http://192.168.1.229:3001/email/send", requestOptions)
           .then((response) => response.text())
           .then((result) => {
