@@ -18,9 +18,9 @@ async function measureTime(callback) {
   );
   const elapsedSeconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
 
-  console.log(
-    `Elapsed time: ${elapsedHours}:${elapsedMinutes}:${elapsedSeconds}`
-  );
+  // console.log(
+  //   `Elapsed time: ${elapsedHours}:${elapsedMinutes}:${elapsedSeconds}`
+  // );
   return {
     elapsedTime,
     runner,

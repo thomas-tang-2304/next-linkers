@@ -28,7 +28,6 @@ eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'__Inter_f3
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* reexport default from dynamic */ _client_link__WEBPACK_IMPORTED_MODULE_0___default.a)\n/* harmony export */ });\n/* harmony import */ var _client_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../client/link */ \"(ssr)/./node_modules/next/dist/client/link.js\");\n/* harmony import */ var _client_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_client_link__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _client_link__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== \"default\") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _client_link__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\n\n\n//# sourceMappingURL=link.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2FwaS9saW5rLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUF5QztBQUNWOztBQUUvQiIsInNvdXJjZXMiOlsid2VicGFjazovL25leHQtbGlua3MvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2FwaS9saW5rLmpzP2U2MmQiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHsgZGVmYXVsdCB9IGZyb20gXCIuLi9jbGllbnQvbGlua1wiO1xuZXhwb3J0ICogZnJvbSBcIi4uL2NsaWVudC9saW5rXCI7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPWxpbmsuanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/api/link.js\n");
-<<<<<<< HEAD
 
 /***/ }),
 
@@ -39,20 +38,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../client/components/navigation */ \"(ssr)/./node_modules/next/dist/client/components/navigation.js\");\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_client_components_navigation__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== \"default\") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\n\n//# sourceMappingURL=navigation.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2FwaS9uYXZpZ2F0aW9uLmpzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUFnRDs7QUFFaEQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LWxpbmtzLy4vbm9kZV9tb2R1bGVzL25leHQvZGlzdC9hcGkvbmF2aWdhdGlvbi5qcz8zZmE1Il0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gXCIuLi9jbGllbnQvY29tcG9uZW50cy9uYXZpZ2F0aW9uXCI7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPW5hdmlnYXRpb24uanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/api/navigation.js\n");
-=======
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
-
-/***/ }),
-
-/***/ "(ssr)/./node_modules/next/dist/api/navigation.js":
-/*!**************************************************!*\
-  !*** ./node_modules/next/dist/api/navigation.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../client/components/navigation */ \"(ssr)/./node_modules/next/dist/client/components/navigation.js\");\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_client_components_navigation__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== \"default\") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\n\n//# sourceMappingURL=navigation.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2FwaS9uYXZpZ2F0aW9uLmpzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUFnRDs7QUFFaEQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LWxpbmtzLy4vbm9kZV9tb2R1bGVzL25leHQvZGlzdC9hcGkvbmF2aWdhdGlvbi5qcz8zZmE1Il0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gXCIuLi9jbGllbnQvY29tcG9uZW50cy9uYXZpZ2F0aW9uXCI7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPW5hdmlnYXRpb24uanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/api/navigation.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../client/components/navigation */ \"(ssr)/./node_modules/next/dist/client/components/navigation.js\");\n/* harmony import */ var _client_components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_client_components_navigation__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== \"default\") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _client_components_navigation__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\n\n//# sourceMappingURL=navigation.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2FwaS9uYXZpZ2F0aW9uLmpzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUFnRDs7QUFFaEQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LWxpbmtzLy4vbm9kZV9tb2R1bGVzL25leHQvZGlzdC9hcGkvbmF2aWdhdGlvbi5qcz84MDczIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gXCIuLi9jbGllbnQvY29tcG9uZW50cy9uYXZpZ2F0aW9uXCI7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPW5hdmlnYXRpb24uanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/api/navigation.js\n");
 
 /***/ }),
 
@@ -2043,8 +2029,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cli
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/api/server.js":
 /*!**********************************************!*\
   !*** ./node_modules/next/dist/api/server.js ***!
@@ -2056,7 +2040,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ser
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/build/output/log.js":
 /*!****************************************************!*\
   !*** ./node_modules/next/dist/build/output/log.js ***!
@@ -2301,8 +2284,6 @@ eval("\nvar __defProp = Object.defineProperty;\nvar __getOwnPropDesc = Object.ge
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/compiled/@edge-runtime/cookies/index.js":
 /*!************************************************************************!*\
   !*** ./node_modules/next/dist/compiled/@edge-runtime/cookies/index.js ***!
@@ -2314,7 +2295,6 @@ eval("\nvar __defProp = Object.defineProperty;\nvar __getOwnPropDesc = Object.ge
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(action-browser)/./node_modules/next/dist/compiled/@opentelemetry/api/index.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/next/dist/compiled/@opentelemetry/api/index.js ***!
@@ -2388,8 +2368,6 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/compiled/ua-parser-js/ua-parser.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/next/dist/compiled/ua-parser-js/ua-parser.js ***!
@@ -2411,7 +2389,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/lib/constants.js":
 /*!*************************************************!*\
   !*** ./node_modules/next/dist/lib/constants.js ***!
@@ -2709,8 +2686,6 @@ eval("\nmodule.exports = __webpack_require__(/*! ../../module.compiled */ \"(ssr
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(rsc)/./node_modules/next/dist/server/future/route-modules/app-route/module.compiled.js":
 /*!*****************************************************************************************!*\
   !*** ./node_modules/next/dist/server/future/route-modules/app-route/module.compiled.js ***!
@@ -2722,7 +2697,6 @@ eval("\nif (false) {} else {\n    if (false) {} else {\n        if (true) {\n   
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/server/lib/clone-response.js":
 /*!*************************************************************!*\
   !*** ./node_modules/next/dist/server/lib/clone-response.js ***!
@@ -2844,8 +2818,6 @@ eval("/**\n * Find the starting index of Uint8Array `b` within Uint8Array `a`.\n
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/server/web/error.js":
 /*!****************************************************!*\
   !*** ./node_modules/next/dist/server/web/error.js ***!
@@ -2879,7 +2851,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(action-browser)/./node_modules/next/dist/server/web/spec-extension/adapters/headers.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/next/dist/server/web/spec-extension/adapters/headers.js ***!
@@ -2902,8 +2873,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/server/web/spec-extension/adapters/reflect.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/next/dist/server/web/spec-extension/adapters/reflect.js ***!
@@ -2915,7 +2884,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/server/web/spec-extension/adapters/reflect.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/next/dist/server/web/spec-extension/adapters/reflect.js ***!
@@ -2949,8 +2917,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/server/web/spec-extension/cookies.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/next/dist/server/web/spec-extension/cookies.js ***!
@@ -3028,7 +2994,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/escape-regexp.js":
 /*!************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/escape-regexp.js ***!
@@ -3040,6 +3005,17 @@ eval("// regexp is based on https://github.com/sindresorhus/escape-string-regexp
 
 /***/ }),
 
+/***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/get-hostname.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/next/dist/shared/lib/get-hostname.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nObject.defineProperty(exports, \"getHostname\", ({\n    enumerable: true,\n    get: function() {\n        return getHostname;\n    }\n}));\nfunction getHostname(parsed, headers) {\n    // Get the hostname from the headers if it exists, otherwise use the parsed\n    // hostname.\n    let hostname;\n    if ((headers == null ? void 0 : headers.host) && !Array.isArray(headers.host)) {\n        hostname = headers.host.toString().split(\":\", 1)[0];\n    } else if (parsed.hostname) {\n        hostname = parsed.hostname;\n    } else return;\n    return hostname.toLowerCase();\n} //# sourceMappingURL=get-hostname.js.map\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1tZXRhZGF0YS1yb3V0ZSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NoYXJlZC9saWIvZ2V0LWhvc3RuYW1lLmpzIiwibWFwcGluZ3MiOiI7Ozs7K0NBUWdCQTs7O2VBQUFBOzs7QUFBVCxTQUFTQSxZQUNkQyxNQUFvQyxFQUNwQ0MsT0FBNkI7SUFFN0IsMkVBQTJFO0lBQzNFLFlBQVk7SUFDWixJQUFJQztJQUNKLElBQUlELENBQUFBLFdBQUFBLE9BQUFBLEtBQUFBLElBQUFBLFFBQVNFLElBQUksS0FBSSxDQUFDQyxNQUFNQyxPQUFPLENBQUNKLFFBQVFFLElBQUksR0FBRztRQUNqREQsV0FBV0QsUUFBUUUsSUFBSSxDQUFDRyxRQUFRLEdBQUdDLEtBQUssQ0FBQyxLQUFLLEVBQUUsQ0FBQyxFQUFFO0lBQ3JELE9BQU8sSUFBSVAsT0FBT0UsUUFBUSxFQUFFO1FBQzFCQSxXQUFXRixPQUFPRSxRQUFRO0lBQzVCLE9BQU87SUFFUCxPQUFPQSxTQUFTTSxXQUFXO0FBQzdCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dC1saW5rcy8uLi8uLi8uLi9zcmMvc2hhcmVkL2xpYi9nZXQtaG9zdG5hbWUudHM/MzAyZSJdLCJuYW1lcyI6WyJnZXRIb3N0bmFtZSIsInBhcnNlZCIsImhlYWRlcnMiLCJob3N0bmFtZSIsImhvc3QiLCJBcnJheSIsImlzQXJyYXkiLCJ0b1N0cmluZyIsInNwbGl0IiwidG9Mb3dlckNhc2UiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-metadata-route)/./node_modules/next/dist/shared/lib/get-hostname.js\n");
+
+/***/ }),
+
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/hash.js":
 /*!***************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/hash.js ***!
@@ -3048,6 +3024,28 @@ eval("// regexp is based on https://github.com/sindresorhus/escape-string-regexp
 
 "use strict";
 eval("// http://www.cse.yorku.ca/~oz/hash.html\n// More specifically, 32-bit hash via djbxor\n// (ref: https://gist.github.com/eplawless/52813b1d8ad9af510d85?permalink_comment_id=3367765#gistcomment-3367765)\n// This is due to number type differences between rust for turbopack to js number types,\n// where rust does not have easy way to repreesnt js's 53-bit float number type for the matching\n// overflow behavior. This is more `correct` in terms of having canonical hash across different runtime / implementation\n// as can gaurantee determinstic output from 32bit hash.\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\n0 && (0);\nfunction _export(target, all) {\n    for(var name in all)Object.defineProperty(target, name, {\n        enumerable: true,\n        get: all[name]\n    });\n}\n_export(exports, {\n    djb2Hash: function() {\n        return djb2Hash;\n    },\n    hexHash: function() {\n        return hexHash;\n    }\n});\nfunction djb2Hash(str) {\n    let hash = 5381;\n    for(let i = 0; i < str.length; i++){\n        const char = str.charCodeAt(i);\n        hash = (hash << 5) + hash + char & 0xffffffff;\n    }\n    return hash >>> 0;\n}\nfunction hexHash(str) {\n    return djb2Hash(str).toString(36).slice(0, 5);\n} //# sourceMappingURL=hash.js.map\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NoYXJlZC9saWIvaGFzaC5qcyIsIm1hcHBpbmdzIjoiQUFBQSx3Q0FBd0M7QUFDeEMsNENBQTRDO0FBQzVDLGlIQUFpSDtBQUNqSCx3RkFBd0Y7QUFDeEYsZ0dBQWdHO0FBQ2hHLHdIQUF3SDtBQUN4SCx3REFBd0Q7Ozs7Ozs7Ozs7Ozs7SUFDeENBLFVBQVE7ZUFBUkE7O0lBU0FDLFNBQU87ZUFBUEE7OztBQVRULFNBQVNELFNBQVNFLEdBQVc7SUFDbEMsSUFBSUMsT0FBTztJQUNYLElBQUssSUFBSUMsSUFBSSxHQUFHQSxJQUFJRixJQUFJRyxNQUFNLEVBQUVELElBQUs7UUFDbkMsTUFBTUUsT0FBT0osSUFBSUssVUFBVSxDQUFDSDtRQUM1QkQsT0FBTyxDQUFFQSxRQUFRLEtBQUtBLE9BQU9HLE9BQVE7SUFDdkM7SUFDQSxPQUFPSCxTQUFTO0FBQ2xCO0FBRU8sU0FBU0YsUUFBUUMsR0FBVztJQUNqQyxPQUFPRixTQUFTRSxLQUFLTSxRQUFRLENBQUMsSUFBSUMsS0FBSyxDQUFDLEdBQUc7QUFDN0MiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LWxpbmtzLy4uLy4uLy4uL3NyYy9zaGFyZWQvbGliL2hhc2gudHM/ZGI0NiJdLCJuYW1lcyI6WyJkamIySGFzaCIsImhleEhhc2giLCJzdHIiLCJoYXNoIiwiaSIsImxlbmd0aCIsImNoYXIiLCJjaGFyQ29kZUF0IiwidG9TdHJpbmciLCJzbGljZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/shared/lib/hash.js\n");
+
+/***/ }),
+
+/***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/i18n/detect-domain-locale.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/next/dist/shared/lib/i18n/detect-domain-locale.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nObject.defineProperty(exports, \"detectDomainLocale\", ({\n    enumerable: true,\n    get: function() {\n        return detectDomainLocale;\n    }\n}));\nfunction detectDomainLocale(domainItems, hostname, detectedLocale) {\n    if (!domainItems) return;\n    if (detectedLocale) {\n        detectedLocale = detectedLocale.toLowerCase();\n    }\n    for (const item of domainItems){\n        var _item_domain, _item_locales;\n        // remove port if present\n        const domainHostname = (_item_domain = item.domain) == null ? void 0 : _item_domain.split(\":\", 1)[0].toLowerCase();\n        if (hostname === domainHostname || detectedLocale === item.defaultLocale.toLowerCase() || ((_item_locales = item.locales) == null ? void 0 : _item_locales.some((locale)=>locale.toLowerCase() === detectedLocale))) {\n            return item;\n        }\n    }\n} //# sourceMappingURL=detect-domain-locale.js.map\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1tZXRhZGF0YS1yb3V0ZSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NoYXJlZC9saWIvaTE4bi9kZXRlY3QtZG9tYWluLWxvY2FsZS5qcyIsIm1hcHBpbmdzIjoiOzs7O3NEQUVnQkE7OztlQUFBQTs7O0FBQVQsU0FBU0EsbUJBQ2RDLFdBQTRCLEVBQzVCQyxRQUFpQixFQUNqQkMsY0FBdUI7SUFFdkIsSUFBSSxDQUFDRixhQUFhO0lBRWxCLElBQUlFLGdCQUFnQjtRQUNsQkEsaUJBQWlCQSxlQUFlQyxXQUFXO0lBQzdDO0lBRUEsS0FBSyxNQUFNQyxRQUFRSixZQUFhO1lBRVBJLGNBSXJCQTtRQUxGLHlCQUF5QjtRQUN6QixNQUFNQyxpQkFBQUEsQ0FBaUJELGVBQUFBLEtBQUtFLE1BQU0scUJBQVhGLGFBQWFHLEtBQUssQ0FBQyxLQUFLLEVBQUUsQ0FBQyxFQUFFLENBQUNKLFdBQVc7UUFDaEUsSUFDRUYsYUFBYUksa0JBQ2JILG1CQUFtQkUsS0FBS0ksYUFBYSxDQUFDTCxXQUFXLFFBQ2pEQyxnQkFBQUEsS0FBS0ssT0FBTyxxQkFBWkwsY0FBY00sSUFBSSxDQUFDLENBQUNDLFNBQVdBLE9BQU9SLFdBQVcsT0FBT0QsZUFBQUEsR0FDeEQ7WUFDQSxPQUFPRTtRQUNUO0lBQ0Y7QUFDRiIsInNvdXJjZXMiOlsid2VicGFjazovL25leHQtbGlua3MvLi4vLi4vLi4vLi4vc3JjL3NoYXJlZC9saWIvaTE4bi9kZXRlY3QtZG9tYWluLWxvY2FsZS50cz83ZGViIl0sIm5hbWVzIjpbImRldGVjdERvbWFpbkxvY2FsZSIsImRvbWFpbkl0ZW1zIiwiaG9zdG5hbWUiLCJkZXRlY3RlZExvY2FsZSIsInRvTG93ZXJDYXNlIiwiaXRlbSIsImRvbWFpbkhvc3RuYW1lIiwiZG9tYWluIiwic3BsaXQiLCJkZWZhdWx0TG9jYWxlIiwibG9jYWxlcyIsInNvbWUiLCJsb2NhbGUiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-metadata-route)/./node_modules/next/dist/shared/lib/i18n/detect-domain-locale.js\n");
+
+/***/ }),
+
+/***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/i18n/normalize-locale-path.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/next/dist/shared/lib/i18n/normalize-locale-path.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nObject.defineProperty(exports, \"normalizeLocalePath\", ({\n    enumerable: true,\n    get: function() {\n        return normalizeLocalePath;\n    }\n}));\nfunction normalizeLocalePath(pathname, locales) {\n    let detectedLocale;\n    // first item will be empty string from splitting at first char\n    const pathnameParts = pathname.split(\"/\");\n    (locales || []).some((locale)=>{\n        if (pathnameParts[1] && pathnameParts[1].toLowerCase() === locale.toLowerCase()) {\n            detectedLocale = locale;\n            pathnameParts.splice(1, 1);\n            pathname = pathnameParts.join(\"/\") || \"/\";\n            return true;\n        }\n        return false;\n    });\n    return {\n        pathname,\n        detectedLocale\n    };\n} //# sourceMappingURL=normalize-locale-path.js.map\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1tZXRhZGF0YS1yb3V0ZSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NoYXJlZC9saWIvaTE4bi9ub3JtYWxpemUtbG9jYWxlLXBhdGguanMiLCJtYXBwaW5ncyI6Ijs7Ozt1REFjZ0JBOzs7ZUFBQUE7OztBQUFULFNBQVNBLG9CQUNkQyxRQUFnQixFQUNoQkMsT0FBa0I7SUFFbEIsSUFBSUM7SUFDSiwrREFBK0Q7SUFDL0QsTUFBTUMsZ0JBQWdCSCxTQUFTSSxLQUFLLENBQUM7SUFFbkNILENBQUFBLFdBQVcsRUFBRSxFQUFFSSxJQUFJLENBQUMsQ0FBQ0M7UUFDckIsSUFDRUgsYUFBYSxDQUFDLEVBQUUsSUFDaEJBLGFBQWEsQ0FBQyxFQUFFLENBQUNJLFdBQVcsT0FBT0QsT0FBT0MsV0FBVyxJQUNyRDtZQUNBTCxpQkFBaUJJO1lBQ2pCSCxjQUFjSyxNQUFNLENBQUMsR0FBRztZQUN4QlIsV0FBV0csY0FBY00sSUFBSSxDQUFDLFFBQVE7WUFDdEMsT0FBTztRQUNUO1FBQ0EsT0FBTztJQUNUO0lBRUEsT0FBTztRQUNMVDtRQUNBRTtJQUNGO0FBQ0YiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LWxpbmtzLy4uLy4uLy4uLy4uL3NyYy9zaGFyZWQvbGliL2kxOG4vbm9ybWFsaXplLWxvY2FsZS1wYXRoLnRzPzBiNzMiXSwibmFtZXMiOlsibm9ybWFsaXplTG9jYWxlUGF0aCIsInBhdGhuYW1lIiwibG9jYWxlcyIsImRldGVjdGVkTG9jYWxlIiwicGF0aG5hbWVQYXJ0cyIsInNwbGl0Iiwic29tZSIsImxvY2FsZSIsInRvTG93ZXJDYXNlIiwic3BsaWNlIiwiam9pbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(app-metadata-route)/./node_modules/next/dist/shared/lib/i18n/normalize-locale-path.js\n");
 
 /***/ }),
 
@@ -3095,8 +3093,6 @@ eval("/**\n * For a given page path, this function ensures that there is no back
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/router/utils/add-locale.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/add-locale.js ***!
@@ -3130,7 +3126,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/router/utils/app-paths.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/app-paths.js ***!
@@ -3142,8 +3137,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/router/utils/format-next-pathname-info.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/format-next-pathname-info.js ***!
@@ -3177,7 +3170,6 @@ eval("/**\n * Given a path this function will find the pathname, query and hash 
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/router/utils/parse-relative-url.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/parse-relative-url.js ***!
@@ -3200,8 +3192,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/router/utils/path-has-prefix.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/path-has-prefix.js ***!
@@ -3213,7 +3203,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/router/utils/path-match.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/path-match.js ***!
@@ -3247,8 +3236,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "(app-metadata-route)/./node_modules/next/dist/shared/lib/router/utils/remove-path-prefix.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/remove-path-prefix.js ***!
@@ -3271,7 +3258,6 @@ eval("/**\n * Removes the trailing slash for a given route or page path. Preserv
 
 /***/ }),
 
->>>>>>> a574262ff579004acd748e670a7b104b32445f2b
 /***/ "(rsc)/./node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js ***!

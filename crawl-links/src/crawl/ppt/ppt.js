@@ -9,9 +9,9 @@ import { setTimeout } from 'node:timers/promises';
 export const scrap = async (browser, url) => {
     const page = await browser.newPage();
     await page.setRequestInterception(true);
-    // await page.setExtraHTTPHeaders({
-    //     'Cache-Control': 'no-cache, no-store, must-revalidate'
-    // });
+    await page.setExtraHTTPHeaders({
+        'Cache-Control': 'no-cache, no-store, must-revalidate'
+    });
     await page.on("request", (request) => {
         if (request.resourceType() === "image" || request.resourceType() === 'stylesheet' || request.resourceType() === 'font') {
             request.abort();

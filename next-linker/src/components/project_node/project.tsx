@@ -115,11 +115,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
         setCalling(true);
         setErrorEmail(false);
         setProject({ initialProject }); 
-<<<<<<< HEAD
         fetch("http://localhost:3001/email/send", requestOptions)
-=======
-        fetch("http://192.168.1.229:3001/email/send", requestOptions)
->>>>>>> c984030b73b3a7b064b8ac96c56692ae06155fb4
           .then((response) => response.text())
           .then((result) => {
             setHasError(false);
@@ -182,7 +178,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
               (async () => {
                 await POST_delete_file(projectID);
               })();
-              mapProjectByID(projectID);
+              mapProjectByID();
               openProjectOverview(e);
             }}
           >

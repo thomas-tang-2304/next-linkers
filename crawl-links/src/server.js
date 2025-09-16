@@ -1,12 +1,10 @@
 const express = require("express");
 
 const cluster = require("cluster");
-const http = require("http");
 const numCPUs = require("os").cpus().length;
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const socketIo = require("socket.io");
 
 const { configEnv } = require("./configEnv");
 const { TAG_NAMES } = require("../config.json");
@@ -16,9 +14,7 @@ configEnv();
 // Routers
 const emailRouter = require("./routes/gmail/send_mail_router");
 const { getLinkRouter } = require("./routes/getLinkData");
-const { readFileHistory } = require("./crawl/modules/readFileHistory");
 const { readFileSync, readdirSync } = require("fs");
-const { uniqueArray } = require("./crawl/func/uniqueArray");
 const { paginate_array } = require("./routes/funcs/pagination");
 
 const app = express();
@@ -85,7 +81,7 @@ if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
   // Tạo worker cho mỗi nhân CPU
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
 
@@ -96,9 +92,10 @@ if (cluster.isMaster) {
 } else {
   // Tạo máy chủ HTTP cho mỗi worker
 
-  app.listen(process.env.PORT + cluster.worker.id, () => {
+  app.listen(parseInt(process.env.PORT || 0) + cluster.worker.id, () => {
+    
     console.log(
-      `Server listening on Port ${process.env.PORT + cluster.worker.id}`
+      `Server listening on Port ${parseInt(process.env.PORT || 0) + cluster.worker.id}`
     );
   });
 

@@ -8,7 +8,7 @@
     "crawl": "node crawl/index",
     "server": "pm2 start server",
     "build": "webpack --config webpack.config.js",
-    "dev": "node src/server",
+    "dev": "node src/server.js",
     "production": "NODE_ENV=production pm2 start server.js --name myApp",
     "production-2": "node dist/bundle"
   },

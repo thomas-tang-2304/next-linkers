@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const { OAuth2Client } = require("google-auth-library");
 
 const { configEnv } = require("../../configEnv");
-const { crawlWebsite } = require("../../crawl/cheerio/ch");
+const { crawlWebsite } = require("../../crawl/scraping/main");
 
 const { measureTime } = require("../../crawl/func/measure");
 const { writeFileSync, existsSync, readFileSync } = require("fs");

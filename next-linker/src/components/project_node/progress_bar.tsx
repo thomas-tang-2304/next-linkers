@@ -40,7 +40,7 @@ export default function Progress_bar({ projectLinks, color }: any) {
         ).toFixed(2) ?? 0}
         %{" "}
         {!isNaN(projectLinks?.avgSpeed) &&
-          `(${parseFloat(projectLinks?.avgSpeed).toFixed(1)} url/s)`}
+          `(${parseFloat(projectLinks?.avgSpeed).toFixed(2)} url/s)`}
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
         <div

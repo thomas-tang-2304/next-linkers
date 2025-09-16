@@ -124,7 +124,7 @@ function SimpleDialog(props: SimpleDialogProps | any) {
               <b className="text-purple-300">
                 {props.projectLinksState?.project?.crawlable_links?.total ?? 0}
                 (+
-                {props.projectLinksState?.project?.increase})
+                {props.projectLinksState?.project?.crawlable_links?.last_length ?? 0})
               </b>
               , completed{" "}
               <b className="text-cyan-500">
