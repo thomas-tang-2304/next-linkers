@@ -117,7 +117,7 @@ function delay(ms) {
 
 // Function to crawl a website
 async function crawlWebsite(startUrl, projectUid, color = "white") {
-  const pageEachScrapeWave = 10;
+  const pageEachScrapeWave = 15;
   const originUrl = startUrl.includes("http")
     ? startUrl
     : new URL(`https://${startUrl}`).href;
@@ -161,11 +161,13 @@ async function crawlWebsite(startUrl, projectUid, color = "white") {
         crawlable_links: {
           new_links: 0,
           total: 0,
+          last_length: 0,
         },
         avgSpeed: 1,
         overview_features,
         project_id: projectUid,
         project_name: originUrl,
+        is_started: true,
         status: "crawling",
         color,
       }),
@@ -177,209 +179,210 @@ async function crawlWebsite(startUrl, projectUid, color = "white") {
     checkCrawlabledLinks(JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url, originUrl, JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).tag)
   ));
   while (CRAWLABLE_LINKS.length > 0) {
-    if (existsSync(`src/history/${projectUid}`)) {
-      
-      const url = CRAWLABLE_LINKS.shift();
-      
-      temp.push(fetchAndParseHTML(browser, url, null, "href_links"));
-      let avgSpeed_old = JSON.parse(
-          readFileSync(`src/history/${projectUid}/main.json`, "utf-8")
-        ).avgSpeed;
-      if (temp.length == pageEachScrapeWave || i == 0 || i == UNIQUE_CRAWLABLE_LINKS.length - 1) {
-        let dataLength
-        const startTime = new Date();
+     await (async() => {
+
+      if (existsSync(`src/history/${projectUid}`)) {
         
-        await Promise.all(temp).then((fetchData) => {
-          dataLength = fetchData.length
-          for (let index = 0; index < dataLength; index++) {
-            const eachData = fetchData[index];
-            if (eachData) {
-              (async() => {
-              const links = await extractLinks(eachData.html, originUrl);
-                
-              
-                
-
-                uniqueArray(links.href_links).map((link, id) => {
+        const url = CRAWLABLE_LINKS.shift();
+        
+        temp.push(fetchAndParseHTML(browser, url, null, "href_links"));
+        let avgSpeed_old = JSON.parse(
+            readFileSync(`src/history/${projectUid}/main.json`, "utf-8")
+          ).avgSpeed;
+        if (temp.length == pageEachScrapeWave || i == 0 || i == UNIQUE_CRAWLABLE_LINKS.length - 1) {
+          let dataLength
+          const startTime = new Date();
+          
+          await Promise.all(temp).then((fetchData) => {
+            dataLength = fetchData.length
+            for (let index = 0; index < dataLength; index++) {
+              const eachData = fetchData[index];
+              if (eachData) {
+                (async() => {
+                const links = await extractLinks(eachData.html, originUrl);
                   
-                  if (!existsSync(`src/history/${projectUid}/${link?.attr}/${link?.tag}/${md5(`${link.tag}-${link.url}`)}.json`)){
+                
+                  
+  
+                  uniqueArray(links.href_links).map((link, id) => {
                     
-                    if (checkCrawlabledLinks(link?.url, originUrl, link?.tag)) {
+                    if (!existsSync(`src/history/${projectUid}/${link?.attr}/${link?.tag}/${md5(`${link.tag}-${link.url}`)}.json`)){
                       
-                     
-                       writeLinkFile(
-                        { url: link.url, 
-                          crawl_status: null,
-                          id: md5(`${link.tag}-${link.url}`),
-                          tag: link.tag,
-                         },
-                        projectUid,
-                        originUrl,
-                        "href"
-                      );
-
-                      
-                    } else {
-                     
-
+                      if (checkCrawlabledLinks(link?.url, originUrl, link?.tag)) {
+                        
+                       
+                         writeLinkFile(
+                          { url: link.url, 
+                            crawl_status: null,
+                            id: md5(`${link.tag}-${link.url}`),
+                            tag: link.tag,
+                           },
+                          projectUid,
+                          originUrl,
+                          "href"
+                        );
+  
+                        
+                      } else {
+                       
+  
+                        writeLinkFile(
+                          { 
+                            url: link.url, 
+                            crawl_status: "successfully",
+                            content_type: mime.lookup(link.url) || "unknown",
+                            id: md5(`${link.tag}-${link.url}`),
+                            tag: link.tag, 
+                          },
+                          projectUid,
+                          originUrl,
+                          "href"
+                        );
+                      }
+                    }
+                  
+                    return link;
+                  }); 
+  
+                  uniqueArray(links.src_links).map((link, id) => {
+                    
+                      if (!existsSync(`src/history/${projectUid}/${link?.attr}/${link?.tag}/${md5(`${link.tag}-${link.url}`)}.json`)){
                       writeLinkFile(
-                        { 
-                          url: link.url, 
+                        {
+                          url: link.url,
                           crawl_status: "successfully",
                           content_type: mime.lookup(link.url) || "unknown",
                           id: md5(`${link.tag}-${link.url}`),
-                          tag: link.tag, 
+                          tag: link.tag,
                         },
                         projectUid,
                         originUrl,
-                        "href"
-                      );
-                    }
-                  }
-                
-                  return link;
-                }); 
-
-                uniqueArray(links.src_links).map((link, id) => {
-                  
-                    if (!existsSync(`src/history/${projectUid}/${link?.attr}/${link?.tag}/${md5(`${link.tag}-${link.url}`)}.json`)){
+                        "src"
+                      );}
+                    
+  
+                    return link;
+                  });
+  
+                  // if (!existsSync(`src/history/${projectUid}/href/a/${md5(`a-${eachData.url}`)}.json`)){
                     writeLinkFile(
-                      {
-                        url: link.url,
+                      { 
+                        url: eachData.url,
+                        id: md5(`a-${eachData.url}`),
+                        in_this_link: {
+                          href_links: uniqueArray(
+                            links.href_links.map((l) => md5(`${l.tag}-${l.url}`))
+                          ),
+                          src_links: uniqueArray(
+                            links.src_links.map((l) => md5(`${l.tag}-${l.url}`))
+                          ),
+                        }, 
                         crawl_status: "successfully",
-                        content_type: mime.lookup(link.url) || "unknown",
-                        id: md5(`${link.tag}-${link.url}`),
-                        tag: link.tag,
+                        content_type: mime.lookup(eachData.url) || "unknown",
+                        tag: "a"
                       },
                       projectUid,
                       originUrl,
-                      "src"
-                    );}
-                  
-
-                  return link;
-                });
-
-                // if (!existsSync(`src/history/${projectUid}/href/a/${md5(`a-${eachData.url}`)}.json`)){
-                  writeLinkFile(
-                    { 
-                      url: eachData.url,
-                      id: md5(`a-${eachData.url}`),
-                      in_this_link: {
-                        href_links: uniqueArray(
-                          links.href_links.map((l) => md5(`${l.tag}-${l.url}`))
-                        ),
-                        src_links: uniqueArray(
-                          links.src_links.map((l) => md5(`${l.tag}-${l.url}`))
-                        ),
-                      }, 
-                      crawl_status: "successfully",
-                      content_type: mime.lookup(eachData.url) || "unknown",
-                      tag: "a"
-                    },
-                    projectUid,
-                    originUrl,
-                    "href"
-                );
-              // }
-
-              })();
-            }
-          }
-          
-        })
-        UNIQUE_CRAWLABLE_LINKS = uniqueArray(Array.from(readdirSync(`src/history/${projectUid}/href/a`).filter((l) =>
-          checkCrawlabledLinks(JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url, originUrl, JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).tag)
-        )));
-        
-        
-        temp = [];
-        await delay(0);
-        const endTime = new Date();
+                      "href"
+                  );
+                // }
   
-        const finished_s = (endTime - startTime) / 1000;
-        console.log(finished_s);
-        
-        
+                })();
+              }
+            }
+            
+          })
+          await delay(0);
+          temp = [];
+         
+          UNIQUE_CRAWLABLE_LINKS = uniqueArray(Array.from(readdirSync(`src/history/${projectUid}/href/a`).filter((l) =>
+            checkCrawlabledLinks(JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url, originUrl, JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).tag)
+            )));
+          CRAWLABLE_LINKS = uniqueArray(Array.from(readdirSync(`src/history/${projectUid}/href/a`).filter((l) =>
+              checkCrawlabledLinks(JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url, originUrl, JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).tag) && JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).crawl_status != "successfully"
+          ).slice(0, pageEachScrapeWave).map((l) => JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url)
+          
+          ));
+          const endTime = new Date();
+          const finished_s = (endTime - startTime) / 1000;
+          const avg =  (dataLength)/(finished_s )
+                      
+                  
+          console.log(
+            "thời gian thực thi",
+            avg ,
+            "links/s"
+          );
+          avgSpeed_old = avg;
+        }
+  
+        const allLinks = [];
+        uniqueArray(
+          config.TAG_NAMES.map((str) => {
+            const htmlTagAndAttr = str.split("|");
+            try {
       
-        const avg =  (dataLength)/(finished_s )
-                    
-                
-        console.log(
-          "thời gian thực thi",
-          avg ,
-          "links/s"
+              const readData = readdirSync(
+                `src/history/${projectUid}/${htmlTagAndAttr[1]}/${htmlTagAndAttr[0]}`
+              ).map((l) => {
+                return JSON.parse(
+                  readFileSync(
+                    `src/history/${projectUid}/${htmlTagAndAttr[1]}/${htmlTagAndAttr[0]}/${l}`
+                  )
+                );
+              })
+              allLinks.push(
+                ...readData
+              );
+            } catch(err) {
+              console.log(err);
+            }
+          })
         );
-        avgSpeed_old = avg;
-
-        CRAWLABLE_LINKS = uniqueArray(Array.from(readdirSync(`src/history/${projectUid}/href/a`).filter((l) =>
-          checkCrawlabledLinks(JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url, originUrl, JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).tag) && JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).crawl_status != "successfully"
-        ).slice(0, pageEachScrapeWave).map((l) => JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l}`)).url)
-      ));
+    
+        overview_features["a"] = allLinks.filter((l) => l?.tag == "a").length;
+        overview_features["link"] = allLinks.filter((l) => l?.tag == "link").length;
+    
+        overview_features["img"] = allLinks.filter((l) => l?.tag == "img").length;
+        overview_features["others"] = allLinks.filter(
+          (l) => l?.tag != "img" && l?.tag != "link" && l?.tag != "a"
+        ).length;
+  
+        const links_come_in = allLinks.filter((l) =>
+                checkCrawlabledLinks(l.url, originUrl, l?.tag)
+              ).length - UNIQUE_CRAWLABLE_LINKS.length
+        writeFileSync(
+          `src/history/${projectUid}/main.json`,
+          JSON.stringify({
+            all_links: {
+              total: allLinks.length,
+            },
+            crawlable_links: {
+              new_links: i + 1,
+              total: allLinks.filter((l) =>
+                checkCrawlabledLinks(l.url, originUrl, l?.tag)
+              ).length,
+              last_length: links_come_in
+              
+            },
+            avgSpeed: avgSpeed_old,
+            overview_features,
+          
+            project_id: projectUid,
+            project_name: originUrl,
+            status: "crawling",
+            color,
+          })
+        );
+        
+        lastLength = 0;
+        i++;
+        await delay(0);
         
       }
-
-      const allLinks = [];
-      uniqueArray(
-        config.TAG_NAMES.map((str) => {
-          const htmlTagAndAttr = str.split("|");
-          try {
-    
-            const readData = readdirSync(
-              `src/history/${projectUid}/${htmlTagAndAttr[1]}/${htmlTagAndAttr[0]}`
-            ).map((l) => {
-              return JSON.parse(
-                readFileSync(
-                  `src/history/${projectUid}/${htmlTagAndAttr[1]}/${htmlTagAndAttr[0]}/${l}`
-                )
-              );
-            })
-            allLinks.push(
-              ...readData
-            );
-          } catch(err) {
-            console.log(err);
-          }
-        })
-      );
-  
-      overview_features["a"] = allLinks.filter((l) => l?.tag == "a").length;
-      overview_features["link"] = allLinks.filter((l) => l?.tag == "link").length;
-  
-      overview_features["img"] = allLinks.filter((l) => l?.tag == "img").length;
-      overview_features["others"] = allLinks.filter(
-        (l) => l?.tag != "img" && l?.tag != "link" && l?.tag != "a"
-      ).length;
-      writeFileSync(
-        `src/history/${projectUid}/main.json`,
-        JSON.stringify({
-          all_links: {
-            total: allLinks.length,
-          },
-          crawlable_links: {
-            new_links: i + 1,
-            total: allLinks.filter((l) =>
-              checkCrawlabledLinks(l.url, originUrl, l?.tag)
-            ).length,
-            last_length: lastLength,
-            
-          },
-          avgSpeed: avgSpeed_old,
-          overview_features,
-        
-          project_id: projectUid,
-          project_name: originUrl,
-          status: "crawling",
-          color,
-        })
-      );
-      lastLength = 0;
-      await delay(0);
-      i++;
-    }
-    
-        
+    })();
   }
+  await browser.close();
   const allLinks = [];
   uniqueArray(
     config.TAG_NAMES.map((str) => {
@@ -447,7 +450,7 @@ async function crawlWebsite(startUrl, projectUid, color = "white") {
   //   queue?.href_links
   // );
 
-  await browser.close();
+ 
 
   // return jsonToHtmlList({
   //   completed_date: getFormattedDate(),

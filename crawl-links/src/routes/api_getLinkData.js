@@ -31,7 +31,7 @@ getLinkRouter.post("/delete-file", (req, res) => {
 });
 
 getLinkRouter.post("/create-file", (req, res) => {
-  const { color, projectID, project_id, project_name, status } = req.body;
+  const { color, projectID, project_id, project_name, status, is_started } = req.body;
   // console.log(proj);
   if (existsSync(`src/history/${project_id}`)) {
     removeSync(`src/history/${project_id}`);
@@ -54,7 +54,6 @@ getLinkRouter.post("/create-file", (req, res) => {
         projectID: projectID,
       });
     } else {
-      // writeFileSync(`src/history/${projectID}/main.json`);
       if (existsSync(`src/history/${project_id}.json`)) {
         unlinkSync(`src/history/${project_id}.json`);
       }
@@ -74,7 +73,8 @@ getLinkRouter.post("/create-file", (req, res) => {
             projectID,
             project_id,
             project_name,
-            status,
+            status: is_started ? status : "failed",
+            is_started,
           })
         );
       }
@@ -87,7 +87,7 @@ getLinkRouter.post("/create-file", (req, res) => {
 });
 
 getLinkRouter.get("/send-link", (req, res) => {
-  const { project_id } = req.query;
+  const { project_id, is_started } = req.query;
 
   try {
     const main = readFileSync(`src/history/${project_id}/main.json`, "utf-8");
@@ -98,9 +98,11 @@ getLinkRouter.get("/send-link", (req, res) => {
       res.status(200).send({
         new_links: 0,
         total: 0,
+        
         project_id,
         project_name: "No Project",
         status: "failed",
+        is_started
       });
     }
   } catch (err) {
@@ -110,6 +112,7 @@ getLinkRouter.get("/send-link", (req, res) => {
       project_id,
       project_name: "No Project",
       status: "failed",
+      is_started
     });
   }
 });

@@ -13,7 +13,7 @@ configEnv();
 
 // Routers
 const emailRouter = require("./routes/gmail/send_mail_router");
-const { getLinkRouter } = require("./routes/getLinkData");
+const { getLinkRouter } = require("./routes/api_getLinkData");
 const { readFileSync, readdirSync } = require("fs");
 const { paginate_array } = require("./routes/funcs/pagination");
 

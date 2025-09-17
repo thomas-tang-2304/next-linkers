@@ -39,7 +39,7 @@ emailRouter.post("/send", async (req, res) => {
     );
 
     if (
-      existsSync(`src/history/${uid_socket}`)
+      !existsSync(`src/history/${uid_socket}`)
     ) {
       throw new Error("The project has been deleted!");
     }
