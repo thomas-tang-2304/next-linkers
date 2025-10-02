@@ -402,12 +402,12 @@ async function crawlWebsite(startUrl, projectUid, color = "white", status) {
             total: allLinks.length,
           },
           crawlable_links: {
-            new_links: uniqueArray(allLinks.filter((l) =>
+            new_links: allLinks.filter((l) =>
               checkCrawlabledLinks(l.url, originUrl, l?.tag) && JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l?.id}.json`)).crawl_status == "successfully"
-            )).length,
-            total: uniqueArray(allLinks.filter((l) =>
+            ).length,
+            total: allLinks.filter((l) =>
               checkCrawlabledLinks(l.url, originUrl, l?.tag)
-            )).length,
+            ).length,
             last_length: links_come_in
             
           },
@@ -466,12 +466,12 @@ async function crawlWebsite(startUrl, projectUid, color = "white", status) {
         total: allLinks.length,
       },
       crawlable_links: {
-        new_links: uniqueArray(allLinks.filter((l) =>
+        new_links: allLinks.filter((l) =>
           checkCrawlabledLinks(l.url, originUrl, l?.tag) && JSON.parse(readFileSync(`src/history/${projectUid}/href/a/${l?.id}.json`)).crawl_status == "successfully"
-        )).length,
-        total: uniqueArray(allLinks.filter((l) =>
+        ).length,
+        total: allLinks.filter((l) =>
           checkCrawlabledLinks(l.url, originUrl, l?.tag)
-        )).length,
+        ).length,
       },
       overview_features,
       project_id: projectUid,
