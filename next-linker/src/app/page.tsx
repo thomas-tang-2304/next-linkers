@@ -1,15 +1,11 @@
 "use client";
 
-import type { Metadata } from "next";
 import {
   useState,
   type ReactElement,
   useEffect,
-  useRef,
   createContext,
-  useLayoutEffect,
-  useCallback,
-  useMemo,
+
 } from "react";
 import Layout from "../app/layout";
 
@@ -41,8 +37,8 @@ function guidGenerator() {
 }
 
 const Page: NextPageWithLayout = () => {
-  const [isCalling, setCalling] = useState<boolean | null>(null);
   const [projects, setProjects] = useState<any[]>([]);
+  
 
   useEffect(() => {
     handleGetCookies();
@@ -67,24 +63,15 @@ const Page: NextPageWithLayout = () => {
         {projects
           ?.filter((proj: string, key: number) => key % 4 == 0)
           ?.map((proj: string, key: number) => (
-            <>
-              <div key={key} className="rounded-lg w-full">
-                <CrawllinksContext.Provider
+            <div key={key} className="rounded-lg w-full">
+              
+              <Project
                 key={key}
-                  value={{
-                    isCalling,
-                    setCalling,
-                  }}
-                >
-                  <Project
-                  key={key}
-                    projectID={proj}
-                    setProjects={setProjects}
-                    projects={projects}
-                  />
-                </CrawllinksContext.Provider>
-              </div>
-            </>
+                projectID={proj}
+                setProjects={setProjects}
+                projects={projects}
+              />
+            </div>
           ))}
         {projects.length % 4 == 0 && (
           <button
@@ -104,24 +91,16 @@ const Page: NextPageWithLayout = () => {
         {projects
           ?.filter((proj: string, key: number) => key % 4 == 1)
           ?.map((proj: string, key: number) => (
-            <>
-              <div key={key} className="rounded-lg w-full">
-                <CrawllinksContext.Provider
+            <div key={key} className="rounded-lg w-full">
+              
+              <Project
+    
                 key={key}
-                  value={{
-                    isCalling,
-                    setCalling,
-                  }}
-                >
-                  <Project
-                  key={key}
-                    projectID={proj}
-                    setProjects={setProjects}
-                    projects={projects}
-                  />
-                </CrawllinksContext.Provider>
-              </div>
-            </>
+                projectID={proj}
+                setProjects={setProjects}
+                projects={projects}
+              />
+            </div>
           ))}
         {projects.length % 4 == 1 && (
           <button
@@ -140,24 +119,15 @@ const Page: NextPageWithLayout = () => {
         {projects
           ?.filter((proj: string, key: number) => key % 4 == 2)
           ?.map((proj: string, key: number) => (
-            <>
-              <div key={key} className="rounded-lg w-full">
-                <CrawllinksContext.Provider
+            <div key={key} className="rounded-lg w-full">
+              
+              <Project
                 key={key}
-                  value={{
-                    isCalling,
-                    setCalling,
-                  }}
-                >
-                  <Project
-                  key={key}
-                    projectID={proj}
-                    setProjects={setProjects}
-                    projects={projects}
-                  />
-                </CrawllinksContext.Provider>
-              </div>
-            </>
+                projectID={proj}
+                setProjects={setProjects}
+                projects={projects}
+              />
+            </div>
           ))}
         {projects.length % 4 == 2 && (
           <button
@@ -176,25 +146,15 @@ const Page: NextPageWithLayout = () => {
         {projects
           ?.filter((proj: string, key: number) => key % 4 == 3)
           ?.map((proj: string, key: number) => (
-            <>
-              <div key={key} className="rounded-lg w-full">
-                <CrawllinksContext.Provider
+            <div key={key} className="rounded-lg w-full">
+              
+              <Project
                 key={key}
-                  value={{
-                    
-                    isCalling,
-                    setCalling,
-                  }}
-                >
-                  <Project
-                  key={key}
-                    projectID={proj}
-                    setProjects={setProjects}
-                    projects={projects}
-                  />
-                </CrawllinksContext.Provider>
-              </div>
-            </>
+                projectID={proj}
+                setProjects={setProjects}
+                projects={projects}
+              />
+            </div>
           ))}
         {projects.length % 4 == 3 && (
           <button

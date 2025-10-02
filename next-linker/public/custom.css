@@ -1,0 +1,7 @@
+.MuiChartsAxis-root line, .css-1s5kplv-MuiChartsAxisHighlight-root {
+    stroke: white !important;
+}
+
+.MuiChartsAxis-root *, .MuiChartsLegend-root text {
+    fill: white !important;
+}

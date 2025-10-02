@@ -43,3 +43,46 @@ var myHeaders = new Headers();
           .catch((error) => error)
          
 };
+
+
+export const POST_stop_crawling_file = async (project_id: any) => {
+var myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({project_id});
+
+      var requestOptions: any = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+       return fetch("http://localhost:3002/links/stop-crawling-file", requestOptions)
+          .then((response) => response.text())
+          .then((result) => result)
+          .catch((error) => error)
+         
+};
+
+export const POST_continue_crawling_file = async (project_id: any) => {
+      var myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({project_id});
+
+      var requestOptions: any = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+       return fetch("http://localhost:3002/links/continue-crawling-file", requestOptions)
+          .then((response) => response.text())
+          .then((result) => result)
+          .catch((error) => error)
+         
+};

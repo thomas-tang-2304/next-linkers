@@ -2,10 +2,7 @@ import puppeteer from 'puppeteer-core';
 import { setTimeout } from 'node:timers/promises';
 
 
-// const browser = await puppeteer.launch({
-//     headless: false,
-//     executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-// });
+
 export const scrap = async (browser, url) => {
     const page = await browser.newPage();
     await page.setRequestInterception(true);
@@ -43,7 +40,7 @@ async function autoScroll(page){
     while (true) {
       prevHeight = await page.evaluate('document.body.scrollHeight');
       await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
-      await setTimeout(2000);  // Wait for lazy-loaded content to appear
+      await setTimeout(3000);  // Wait for lazy-loaded content to appear
   
       const newHeight = await page.evaluate('document.body.scrollHeight');
       if (newHeight === prevHeight) {

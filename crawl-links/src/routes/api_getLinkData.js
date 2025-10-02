@@ -12,12 +12,36 @@ const {
 const { removeSync } = require("fs-extra");
 const { TAG_NAMES } = require("../../config.json");
 const { readFileHistory } = require("../crawl/modules/readFileHistory");
-const { uniqueObjectsArray } = require("../crawl/func/uniqueArray");
-const { url } = require("inspector");
+
 const { paginate_array } = require("./funcs/pagination");
 const { isValidUrl } = require("../crawl/func/validUrl");
 
 const getLinkRouter = express.Router();
+
+getLinkRouter.post("/stop-crawling-file", (req, res) => {
+  const { project_id } = req.body;
+  
+  if (existsSync(`src/history/${project_id}`)) {
+    const current = JSON.parse(readFileSync(`src/history/${project_id}/main.json`, "utf-8"));
+    writeFileSync(`src/history/${project_id}/main.json`, JSON.stringify({...current, status: "stop"}), "utf-8");
+    res.status(200).send(`${project_id} delete successfully`);
+  } else {
+    res.status(400).send(`${project_id} file id has been delete`);
+  }
+});
+
+
+getLinkRouter.post("/continue-crawling-file", (req, res) => {
+  const { project_id } = req.body;
+  
+  if (existsSync(`src/history/${project_id}`)) {
+    const current = JSON.parse(readFileSync(`src/history/${project_id}/main.json`, "utf-8"));
+    writeFileSync(`src/history/${project_id}/main.json`, JSON.stringify({...current, status: "continue"}), "utf-8");
+    res.status(200).send(`${project_id} delete successfully`);
+  } else {
+    res.status(400).send(`${project_id} file id has been delete`);
+  }
+});
 
 getLinkRouter.post("/delete-file", (req, res) => {
   const { project_id } = req.body;
@@ -250,5 +274,25 @@ getLinkRouter.get("/project", async (req, res) => {
     });
   }
 });
+
+getLinkRouter.get("/crawl-speed", async (req, res) => {
+  try {
+    // console.log("getting");
+    const { project_id } = req.query;
+    const avg_array =
+      readFileSync(`src/history/${project_id}/crawl_speed.json`);
+
+    if (project_id && avg_array) {
+      res.status(200).send(avg_array);
+    }
+  } catch (err) {
+    res.status(200).send({
+      err: "ERROR: " + err,
+      status: false,
+    });
+  }
+});
+
+
 
 module.exports = { getLinkRouter };

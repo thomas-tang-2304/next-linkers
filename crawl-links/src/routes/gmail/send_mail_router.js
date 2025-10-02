@@ -23,8 +23,8 @@ myOAuth2Client.setCredentials({
 });
 
 // Tạo API /email/send với method POST
-emailRouter.post("/send", async (req, res) => {
-  const { email, url, uid_socket, color } = req.body;
+emailRouter.post("/crawl", async (req, res) => {
+  const { email, url, uid_socket, color, status } = req.body;
   // writeFileSync(`src/history/${uid_socket}.json`, "")
   const parseUrl = url.includes("http") ? url : new URL(`https://${url}`).href;
   try {
@@ -33,9 +33,9 @@ emailRouter.post("/send", async (req, res) => {
     if (
       !email || !url || !uid_socket
     )
-      throw new Error("Please provide email, subject and url!");
+    throw new Error("Please provide email, subject and url!");
     const result = await measureTime(
-      async () => await crawlWebsite(parseUrl, uid_socket, color)
+      async () => await crawlWebsite(parseUrl, uid_socket, color, status)
     );
 
     if (
@@ -57,7 +57,7 @@ emailRouter.post("/send", async (req, res) => {
       "utf-8"
     );
 
-    const htmlResult = result.runner.replace(/\[object Object\]/g, "");
+    const htmlResult = result?.runner?.replace(/\[object Object\]/g, "");
 
     const myAccessTokenObject = await myOAuth2Client.getAccessToken();
 
@@ -94,8 +94,7 @@ emailRouter.post("/send", async (req, res) => {
     });
   } catch (error) {
     console.log(error)
-    // Có lỗi thì các bạn log ở đây cũng như gửi message lỗi về phía client
-
+    
   }
 });
 

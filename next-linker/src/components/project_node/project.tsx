@@ -1,29 +1,24 @@
 import DialogToggle from "../../app/popup/page";
 import React, {
-  useCallback,
-  useContext,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
 import Link from "next/link";
 import { create, get } from "../cookies/cookie";
-import { io } from "socket.io-client";
-import http from "http";
+
 import Progress_bar from "./progress_bar";
-// import { GET_project } from "../../apis/GET_project";
 import { GET_project_general } from "apis/GET_project_general";
-import { POST_create_file, POST_delete_file } from "apis/POST_CRUD_file";
+import { POST_continue_crawling_file, POST_create_file, POST_delete_file, POST_stop_crawling_file } from "apis/POST_CRUD_file";
 import { validate_email } from "funcs/validate_inpu";
 import { toHHMMSS } from "funcs/to_hhmmss";
 import schedule from 'node-schedule';
 
 
-export default function Project({ projectID, setProjects, projects }: any) {
-
+export default function Project({ projectID, setProjects, projects}: any) {
+  const [status, setStatus] = useState<string>("");
   const [isCalling, setCalling] = useState<boolean | null>(null);
-
+  const [isStarted, setStarted] = useState<boolean | null>(null);
   const [progressMsg, setProgressMsg] = useState<any>({});
   const [errorEmail, setErrorEmail] = useState<boolean | null>(null);
   const [hasError, setHasError] = useState<boolean | null>(null);
@@ -35,125 +30,146 @@ export default function Project({ projectID, setProjects, projects }: any) {
  
 
 
+  let fetcher: schedule.Job;
   useEffect(() => {
-    mapProjectByID();
-    const fetcher = (schedule.scheduleJob('*/5 * * * * *', function(){
+    
+    fetcher = (schedule.scheduleJob('*/5 * * * * *', function(){
       (async() => {
-        setProject((await GET_project_general(projectID)).data);
+        try {
+          const data = (await GET_project_general(projectID, isStarted)).data;
+          setStatus(data?.status);
+           setCalling(data?.status == "stop" || data?.status == "finished" || data?.status == "failed" || data == null || !data ? null : true);
+          setProject(data);
+          setStarted(data?.is_started);
+        } catch(err) {
+          setStatus("stop");
+          setCalling(false);
+          setStarted(false);
+        } finally {
+          return () => {
+            fetcher?.cancel();
+          }
+        }
       })();
-  }));
-    return () => {
-      
-      fetcher?.cancel();
-    }
+    }));
+    
   }, [projects]);
 
-  const mapProjectByID = async () => {
-    const projectData = (await GET_project_general(projectID)).data;
-    if (projectData.status == "crawling") {
-      setCalling(true);
-     
-    }
-    if (project.status == "finished" || project.status == "failed") {
-      setCalling(false)
-    }
-    
-    setProject(projectData);
-    return projectData
-  };
+
   
-  const POST_handleSendLink = async (e: any) => {
+  const POST_handleSendLink = async (e: any, stt: string) => {
     if (e.key === "Enter") {
-      
       const colors = ["yellow", "white", "green", "indigo", "purple"];
-
       const random = Math.floor(Math.random() * colors.length);
-     
-
       const initialProject = {
         project_id: projectID,
         project_name: InputLink?.current?.value,
-        status: "crawling",
+        status: stt,
         color: colors[random],
+        is_started:  projectID ? true : false
       };
      
-      (async () => {
-        const initialProjectData = await POST_create_file({
-          ...initialProject,
-          projectID,
-        });
-        // res.create_status;
-        console.log(initialProjectData);
-
-        await create(
-          "projects",
-          (
-            await get("projects")
-          )?.value
-            ? (await get("projects")).value + "|" + projectID
-            : projectID
-        );
-      })();
-
+      
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-      var raw = JSON.stringify({
-        url: InputLink.current.value,
-        email: InputEmail.current.value,
-        uid_socket: projectID,
-        color: initialProject.color,
-      });
+     
+      if (stt == "continue") {
+        var raw = JSON.stringify({
+          url: project?.project_name,
+          email:  project?.project_email ?? "account@email.com",
+          uid_socket: project?.project_id,
+          color: initialProject.color,
+        });
 
-      var requestOptions: any = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
-      if (validate_email(InputEmail.current.value.trim())) {
-        setCalling(true);
-        setErrorEmail(false);
-        setProject({ initialProject }); 
-        fetch("http://localhost:3001/email/send", requestOptions)
+        var requestOptions: any = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        };
+        fetch("http://localhost:3001/email/crawl", requestOptions)
           .then((response) => response.text())
           .then((result) => {
             setHasError(false);
-            setProject({
-              project_id: projectID,
-              project_name: initialProject.project_name,
-              finishedTime: JSON.parse(result).elapsedTime / 1000,
-
-              status: "finished",
-            });
-
             setCalling(false);
             console.log(result);
           })
           .catch((error) => {
             setHasError(true);
-            setProject({
-              // finishedTime: error.elapsedTime / 1000,
-              project_id: projectID,
-              project_name: initialProject.project_name,
-              status: "failed",
-            });
             setCalling(false);
             console.log("error", error);
           })
-          .finally(() => {
-            setCalling(false);
-            // console.log(`${projectID} has stop crawling`);
-          });
       } else {
-        setErrorEmail(true);
+        (async () => {
+          await POST_create_file({
+            ...initialProject,
+            projectID,
+          });
+
+          await create(
+            "projects",
+            (
+              await get("projects")
+            )?.value
+              ? (await get("projects")).value + "|" + projectID
+              : projectID
+          );
+        })();
+
+        var raw = JSON.stringify({
+          url: InputLink.current.value,
+          email: InputEmail.current.value,
+          uid_socket: projectID,
+          color: initialProject.color,
+        });
+
+        var requestOptions: any = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        };
+
+        if (validate_email(InputEmail.current.value.trim())) {
+          setCalling(true);
+          setErrorEmail(false);
+          setProject({ initialProject }); 
+          fetch("http://localhost:3001/email/crawl", requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+              setHasError(false);
+              setProject({
+                project_id: projectID,
+                project_name: initialProject.project_name,
+                finishedTime: JSON.parse(result).elapsedTime / 1000,
+
+                status: "finished",
+              });
+
+              setCalling(false);
+              console.log(result);
+            })
+            .catch((error) => {
+              setHasError(true);
+              setProject({
+                // finishedTime: error.elapsedTime / 1000,
+                project_id: projectID,
+                project_name: initialProject.project_name,
+                status: "failed",
+              });
+              setCalling(false);
+              console.log("error", error);
+            })
+           
+        } else {
+          setErrorEmail(true);
+        }
       }
     }
   };
 
-  const openProjectOverview = (e: any) => {
-    return e.stopPropagation();
-  };
+
   return (
     <DialogToggle
       checkedLimitLinks={checkedLimitLinks}
@@ -164,6 +180,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
       progressState={{ progressMsg, setProgressMsg }}
       errorMailState={{ errorEmail, setErrorEmail }}
       callingState={{ isCalling, setCalling }}
+      state={{ isStarted, setStarted }}
       hasErrorState={{ hasError, setHasError }}
       DialogButton={
         <div className="relative group">
@@ -178,8 +195,7 @@ export default function Project({ projectID, setProjects, projects }: any) {
               (async () => {
                 await POST_delete_file(projectID);
               })();
-              mapProjectByID();
-              openProjectOverview(e);
+              e.stopPropagation();
             }}
           >
             <svg
@@ -204,10 +220,46 @@ export default function Project({ projectID, setProjects, projects }: any) {
             {project?.project_name && project?.project_id && (
               <>
                 <div className="absolute top-[4px] left-[7px] flex gap-2">
+                  {
+                    status == "stop" || status == "finished" || status == "failed" ? 
+                    <button
+                      className="z-10 right-[-11px] top-[-11px] block"
+                      onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        setStatus("continue");
+                        (async () => {
+                          fetcher?.cancel();
+                          POST_handleSendLink({ key: "Enter" }, "continue");
+                          await POST_continue_crawling_file(projectID);
+                        })();
+                        e.stopPropagation();
+                      }}
+                    >
+                      <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 18V6l8 6-8 6Z"/>
+                      </svg>
+                    </button>
+                    :
+                    <button
+                      className="z-10 right-[-11px] top-[-11px] block"
+                      onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        setStatus("stop");
+                        (async () => {
+                          await POST_stop_crawling_file(projectID);
+                        })();
+                        e.stopPropagation();
+                        // openProjectOverview(e);
+                      }}
+                    >
+                      <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <rect width="12" height="12" x="6" y="6" stroke="currentColor" stroke-linejoin="round" stroke-width="2" rx="1"/>
+                      </svg>
+
+                    </button>
+                  }
                   <Link
                     href={`/project-overview/${project.project_id}`}
                     onClick={(e: React.MouseEvent<HTMLElement>) => {
-                      openProjectOverview(e);
+                      e.stopPropagation();
                     }}
                   >
                     <svg
@@ -256,14 +308,18 @@ export default function Project({ projectID, setProjects, projects }: any) {
                 Status:{" "}
                 <mark
                   className={`bg-transparent ${
-                    project?.status == "crawling"
-                      ? "text-yellow-200"
-                      : project?.status == "failed"
-                      ? "text-red-400"
-                      : "text-emerald-200"
+                    
+                    (project?.status == "crawling" ? 
+                      "text-yellow-200" /* Crawling*/ : 
+                      project?.status == "finished" ?
+                      "text-emerald-200" /*Finished*/  : 
+                      "text-red-400" /*Failed*/ 
+                      )
                   }`}
                 >
-                  {project?.status}
+                  {project?.status == "failed"?
+                      "Failed"
+                    : project?.status}
                 </mark>
               </small>
             </div>

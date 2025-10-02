@@ -9,7 +9,7 @@ const checkCrawlabledLinks = (thisLink, originUrl, tag) =>
     new URL(thisLink).hostname == `${new URL(originUrl).hostname}`) &&
   !thisLink.includes("#") &&
   !thisLink.includes("?") &&
-  !/\.(png|jpg|webp|avif|jpeg|gif|tiff|svg|pdf|css)$/i.test(thisLink);
+  !/\.(png|jpg|webp|avif|jpeg|gif|tiff|svg|pdf|css)$/i.test(thisLink); 
 
 const mapParentIndex = (objArray, queue, href_links) => {
   const parentLinkIndex = (objArray2, href_id) =>
