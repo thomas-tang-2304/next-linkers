@@ -59,10 +59,10 @@ emailRouter.post("/crawl", async (req, res) => {
 
     const htmlResult = result?.runner?.replace(/\[object Object\]/g, "");
 
-    const myAccessTokenObject = await myOAuth2Client.getAccessToken();
-
+    // const myAccessTokenObject = await myOAuth2Client.getAccessToken();
     // Access Token sẽ nằm trong property 'token' trong Object mà chúng ta vừa get được ở trên
-    const myAccessToken = myAccessTokenObject?.token;
+    // const myAccessToken = myAccessTokenObject?.token;
+    // console.log(myAccessToken);
 
     // Tạo một biến Transport từ Nodemailer với đầy đủ cấu hình, dùng để gọi hành động gửi mail
     const transport = nodemailer.createTransport({
@@ -73,8 +73,9 @@ emailRouter.post("/crawl", async (req, res) => {
         clientId: process.env.GOOGLE_MAILER_CLIENT_ID,
         clientSecret: process.env.GOOGLE_MAILER_CLIENT_SECRET,
         refresh_token: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
-        accessToken: myAccessToken,
+        accessToken: process.env.GOOGLE_MAILER_ACCESS_TOKEN,
       },
+      
     });
 
     const mailOptions = {

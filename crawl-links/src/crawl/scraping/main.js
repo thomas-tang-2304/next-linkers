@@ -483,6 +483,12 @@ async function crawlWebsite(startUrl, projectUid, color = "white", status) {
   );
 
   if (current_status){ await browser.close();}
+
+  return jsonToHtmlList(
+    {
+      total: allLinks.length
+    }
+  )
 }
 
 export { crawlWebsite };
