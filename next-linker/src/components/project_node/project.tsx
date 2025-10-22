@@ -77,7 +77,7 @@ export default function Project({ projectID, setProjects, projects}: any) {
       if (stt == "continue") {
         var raw = JSON.stringify({
           url: project?.project_name,
-          email:  project?.project_email ?? "account@email.com",
+          email:  project?.project_email ?? "hongtang240@email.com",
           uid_socket: project?.project_id,
           color: initialProject.color,
         });
@@ -143,7 +143,7 @@ export default function Project({ projectID, setProjects, projects}: any) {
                 project_id: projectID,
                 project_name: initialProject.project_name,
                 finishedTime: JSON.parse(result).elapsedTime / 1000,
-
+                project_email: InputEmail.current.value,
                 status: "finished",
               });
 
@@ -154,6 +154,7 @@ export default function Project({ projectID, setProjects, projects}: any) {
               setHasError(true);
               setProject({
                 // finishedTime: error.elapsedTime / 1000,
+                project_email: InputEmail.current.value,
                 project_id: projectID,
                 project_name: initialProject.project_name,
                 status: "failed",
